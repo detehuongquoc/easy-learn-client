@@ -43,7 +43,7 @@ function App() {
             <HomeSreen />
           </Route>
           <Container style={{ margin: "40px 0" }}>
-            <Route path="/detail/:id" component={LoginForm} />
+            <Route path="login" component={LoginForm} />
             <Route
               path="/register"
               render={(props) => <Auth {...props} authRoute="register" />}
