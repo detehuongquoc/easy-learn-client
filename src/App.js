@@ -1,23 +1,20 @@
+import { Container } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "./components/layout/Header";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import Footer from "./components/layout/Footer";
+import Header2 from "./components/layout/Header2";
 import ProtectedRoute from "./components/routing/ProtectedRoute";
 import Auth from "./Sreen/Auth";
 import DashBoard from "./Sreen/DashBoard";
 import HomeSreen from "./Sreen/HomeSreen";
-import Footer from "./components/layout/Footer";
-import Header2 from "./components/layout/Header2";
+import TodayVocabularySreen from "./Sreen/TodayVocabularySreen";
 import {
   acessTokenSelector,
   isAuthenticatedSelector,
   loadUser,
 } from "./store/reducers/userSlice";
-import { Container } from "@material-ui/core";
-import { getAllVocabulary } from "./store/reducers/vocabularySlice";
 import setAuthToken from "./utils/setAuthenToken";
-import TodayVocabularySreen from "./Sreen/TodayVocabularySreen";
-import Dictionary from "./Sreen/Dictionary";
 function App() {
   const accessToken = useSelector(acessTokenSelector);
   const isAuthenticated = useSelector(isAuthenticatedSelector);
