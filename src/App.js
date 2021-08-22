@@ -46,12 +46,10 @@ function App() {
           </Route>
           <Container style={{ margin: "40px 0" }}>
             <Route
-              exact
               path="/login"
               render={(props) => <Auth {...props} authRoute="login" />}
             />
             <Route
-              exact
               path="/register"
               render={(props) => <Auth {...props} authRoute="register" />}
             />
