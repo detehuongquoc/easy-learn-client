@@ -41,24 +41,23 @@ function App() {
           <Route exact path="/">
             <HomeSreen />
           </Route>
-          <Container style={{ margin: "40px 0" }}>
-            <Route
-              path="/login"
-              render={(props) => <Auth {...props} authRoute="login" />}
-            />
-            <Route
-              path="/register"
-              render={(props) => <Auth {...props} authRoute="register" />}
-            />
-            <ProtectedRoute exact path="/dashboard" component={DashBoard} />
-            <ProtectedRoute
-              exact
-              path="/today"
-              component={TodayVocabularySreen}
-            />
-            {/* <ProtectedRoute exact path="/dictionary" component={Dictionary} /> */}
-            {/* <Route path="*" component={Error} /> */}
-          </Container>
+
+          <Route
+            path="/login"
+            render={(props) => <Auth {...props} authRoute="login" />}
+          />
+          <Route
+            path="/register"
+            render={(props) => <Auth {...props} authRoute="register" />}
+          />
+          <ProtectedRoute exact path="/dashboard" component={DashBoard} />
+          <ProtectedRoute
+            exact
+            path="/today"
+            component={TodayVocabularySreen}
+          />
+          {/* <ProtectedRoute exact path="/dictionary" component={Dictionary} /> */}
+          {/* <Route path="*" component={Error} /> */}
         </Switch>
         <Footer />
       </div>
