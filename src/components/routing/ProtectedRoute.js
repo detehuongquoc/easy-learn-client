@@ -7,18 +7,12 @@ import {
   authLoadingSelector,
   isAuthenticatedSelector,
 } from "../../store/reducers/userSlice";
+import { CircularProgress } from "@material-ui/core";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(isAuthenticatedSelector);
   const authLoading = useSelector(authLoadingSelector);
-
-  if (authLoading)
-    return (
-      <div className="d-flex justify-content-center mt-2">
-        <Skeleton variant="rect" style={{ width: "80%", height: "500px" }} />
-      </div>
-    );
 
   return (
     <Route

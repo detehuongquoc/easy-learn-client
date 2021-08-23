@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import {
+  authLoadingSelector,
   isAuthenticatedSelector,
   loadUser,
   registerUser,
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 const RegisterForm = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-
+  const authLoading = useSelector(authLoadingSelector);
   const isAuthenticated = useSelector(isAuthenticatedSelector);
   const [alert, setAlert] = useState(null);
   const [registerForm, setRegisterForm] = useState({

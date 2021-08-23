@@ -32,19 +32,6 @@ const TodayVocaularySreen = () => {
         Today Vocabularys
       </Typography>
       <TodayVocaularys />
-      {/* <Button
-        style={{
-          position: "fixed",
-          right: 60,
-          bottom: 60,
-          borderRadius: "10px",
-        }}
-        variant="contained"
-        color="secondary"
-        startIcon={<FaPlus />}
-      >
-        Add
-      </Button> */}
     </Container>
   );
 };

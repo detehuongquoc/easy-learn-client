@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
+import RegisterForm from "./components/auth/RegisterForm";
+import test from "./components/auth/test";
 import Footer from "./components/layout/Footer";
 import Header2 from "./components/layout/Header2";
 import ProtectedRoute from "./components/routing/ProtectedRoute";
@@ -38,22 +40,13 @@ function App() {
         <Header2 />
 
         <Switch>
-          {/* <Route path="/detail/:id" component={CartDetail} /> */}
-          <Route exact path="/">
-            <HomeSreen />
-          </Route>
+          <Route exact path="/" component={HomeSreen} />
+
           <Container style={{ margin: "40px 0" }}>
-            <Route path="login" component={LoginForm} />
-            <Route
-              path="/register"
-              render={(props) => <Auth {...props} authRoute="register" />}
-            />
+            <Route path="/login" component={LoginForm} />
+            <Route path="/register" component={RegisterForm} />
             <ProtectedRoute exact path="/dashboard" component={DashBoard} />
-            <ProtectedRoute
-              exact
-              path="/today"
-              component={TodayVocabularySreen}
-            />
+            <ProtectedRoute path="/today" component={TodayVocabularySreen} />
             {/* <ProtectedRoute exact path="/dictionary" component={Dictionary} /> */}
             {/* <Route path="*" component={Error} /> */}
           </Container>
