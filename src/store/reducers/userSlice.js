@@ -80,6 +80,7 @@ const userSlice = createSlice({
     },
     [loadUser.rejected]: (state, action) => {
       state.isAuthenticated = false;
+      state.authLoading = false;
       state.user = {};
     },
     // login
@@ -93,9 +94,6 @@ const userSlice = createSlice({
         state.isAuthenticated = false;
         state.user = {};
       }
-    },
-    [loadUser.rejected]: (state, action) => {
-      console.log("false");
     },
     //register
     [registerUser.fulfilled]: (state, action) => {

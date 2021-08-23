@@ -48,11 +48,12 @@ const LoginForm = () => {
   const login = async (event) => {
     event.preventDefault();
     try {
-      await dispatch(loginUser(loginForm));
-      if (isAuthenticated === false) {
+      const response = await dispatch(loginUser(loginForm));
+      console.log(response);
+      if (response.payload.success === false) {
         setAlert({
           type: "error",
-          message: "Missing username and/or password",
+          message: response.payload.message,
         });
         setTimeout(() => setAlert(null), 3000);
       }
@@ -63,67 +64,61 @@ const LoginForm = () => {
 
   return (
     <>
-      {authLoading == true ? (
-        <div className="d-flex justify-content-center mt-2">
-          <CircularProgress color="secondary" />
-        </div>
-      ) : (
-        <Box
-          display="flex"
-          style={{ width: "80%" }}
-          alignContent="center"
-          className="login"
-        >
-          <Hidden xsDown>
-            <img src="https://assets.quizlet.com/a/j/dist/i/signup/signup-illo.9020601c63ffbc7.png" />
-          </Hidden>
-          <Box display="flex" flexDirection="column" className="login-form">
-            <h1>Login</h1>
-            <AlertMessage info={alert} />
-            <form className={classes.root} autoComplete="off" onSubmit={login}>
-              <div>
-                <TextField
-                  type="text"
-                  label="UserName"
-                  value={username}
-                  name="username"
-                  onChange={onChangeLoginForm}
-                  fullWidth
-                  required
-                />
-              </div>
-              <div>
-                <TextField
-                  label="PassWord"
-                  type="password"
-                  value={password}
-                  name="password"
-                  onChange={onChangeLoginForm}
-                  fullWidth
-                  required
-                />
-              </div>
-              <Button
-                variant="outlined"
-                color="secondary"
-                style={{ marginTop: "25px" }}
-                type="submit"
-              >
-                Login
-              </Button>
-            </form>
-            <Typography variant="p" style={{ marginTop: "40px" }}>
-              Don't have an account ?{" "}
-              <Link
-                to="/register"
-                style={{ textDecoration: "none", color: "#FA7FAB" }}
-              >
-                Sign Up
-              </Link>
-            </Typography>
-          </Box>
+      <Box
+        display="flex"
+        style={{ width: "80%" }}
+        alignContent="center"
+        className="login"
+      >
+        <Hidden xsDown>
+          <img src="https://assets.quizlet.com/a/j/dist/i/signup/signup-illo.9020601c63ffbc7.png" />
+        </Hidden>
+        <Box display="flex" flexDirection="column" className="login-form">
+          <h1>Login</h1>
+          <AlertMessage info={alert} />
+          <form className={classes.root} autoComplete="off" onSubmit={login}>
+            <div>
+              <TextField
+                type="text"
+                label="UserName"
+                value={username}
+                name="username"
+                onChange={onChangeLoginForm}
+                fullWidth
+                required
+              />
+            </div>
+            <div>
+              <TextField
+                label="PassWord"
+                type="password"
+                value={password}
+                name="password"
+                onChange={onChangeLoginForm}
+                fullWidth
+                required
+              />
+            </div>
+            <Button
+              variant="outlined"
+              color="secondary"
+              style={{ marginTop: "25px" }}
+              type="submit"
+            >
+              Login
+            </Button>
+          </form>
+          <Typography variant="p" style={{ marginTop: "40px" }}>
+            Don't have an account ?{" "}
+            <Link
+              to="/register"
+              style={{ textDecoration: "none", color: "#FA7FAB" }}
+            >
+              Sign Up
+            </Link>
+          </Typography>
         </Box>
-      )}
+      </Box>
     </>
   );
 };
