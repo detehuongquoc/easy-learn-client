@@ -69,6 +69,13 @@ const RegisterForm = () => {
         });
         setTimeout(() => setAlert(null), 5000);
       }
+      if (registerData.payload.success) {
+        setAlert({
+          type: "success",
+          message: registerData.payload.message,
+        });
+        setTimeout(() => setAlert(null), 5000);
+      }
     } catch (error) {
       console.log(error);
     }

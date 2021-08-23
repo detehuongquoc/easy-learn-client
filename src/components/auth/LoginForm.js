@@ -56,6 +56,12 @@ const LoginForm = () => {
           message: response.payload.message,
         });
         setTimeout(() => setAlert(null), 3000);
+      } else if (response.payload.success) {
+        setAlert({
+          type: "success",
+          message: response.payload.message,
+        });
+        setTimeout(() => setAlert(null), 3000);
       }
     } catch (error) {
       console.log(error);
